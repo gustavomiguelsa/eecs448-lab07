@@ -15,8 +15,8 @@ int main(int argc, char** argv)
 
 	//You won't do all the tests in main; that's what your Test class will be for
 	//Example:
-	//TestSuite myTester;
-	//myTester.runTests();
+	TestClass myTester;
+	myTester.runTests();
 
 	std::cout << "Running...\nAnd it's done.\nGoodbye.\n";
 

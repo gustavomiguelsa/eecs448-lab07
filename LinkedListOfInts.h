@@ -19,12 +19,12 @@ class LinkedListOfInts : public List<int>
 	/** @pre None.
 	*   @post An empty list is created.
 	*/
-	LinkedListOfInts();
+	LinkedListOfInts();	//NO NEED TO TEST
 	
 	/** @pre None.
 	*   @post Deletes all nodes in the list.
 	*/
-	~LinkedListOfInts();	
+	~LinkedListOfInts();	//NO NEED TO TEST
 
 	/** @pre None.
 	*   @post None.
@@ -49,7 +49,7 @@ class LinkedListOfInts : public List<int>
 	*   @return A standard vector with the contents of the list
 	*   NOTE: This method is guaranteed to work. It's only one guaranteed though
 	*/	
-	std::vector<int> toVector() const;
+	std::vector<int> toVector() const; //THIS ONE WORKS
 
 	/** @pre the value is a valid T.
 	*   @post One new element added to the end of the list.
