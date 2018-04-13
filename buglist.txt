@@ -9,7 +9,7 @@
 
 1)
 
-addBack() -> Fails when adding more than 1 element to the list. Elements are all there but in wrong order. In actuality, the function is adding to the front of the list.
+addBack() -> Fails when adding elements to the list. Elements are all there but in wrong order. In actuality, the function is adding to the front of the list.
 	EXPLANATION: The function is probably using the same algorithm as addFront(), adding the elements to the front of the list instead of at the back of the list each time addBack() is called, or maybe this is also linked with the isEmpty() being always true bug.
 
 
@@ -31,7 +31,7 @@ removeFront() -> Fails whenever called on a populated list. The list seems unhar
 4)
 
 isEmpty() -> Fails whenever called on a populated list. It says the list is empty when it is actually not. Therefore, it is always returning true.
-	EXPLANATION: The function is not properly checking if the list is empty. It may be checking if there is no next element after the last element, but not checking if there are no actual elements in the list.
+	EXPLANATION: The function is not properly checking if the list is empty. Maybe it is checking if there is no next element after the last element only, not accouting for other possible elements before the last one.
 
 
 

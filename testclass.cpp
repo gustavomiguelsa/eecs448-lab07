@@ -31,9 +31,9 @@ void TestClass::printResult(bool var)
 void TestClass::printDescription(int ntest, std::string description)
 {	
 	std::cerr << "\033[1;36m";
-        std::cerr << "Test " << ntest << ": ";
+        std::cerr << "Test " << ntest << " -->  ";
 	std::cerr << "\033[1;0m";
-	std::cerr << description << ": ";
+	std::cerr << description << " -->  ";
 }
 
 void TestClass::runTests()
@@ -114,6 +114,7 @@ bool TestClass::test_addBack2()
 		testableList.addBack(i);
 	
 	std::vector<int> test_vector = testableList.toVector();	//Since it is known that toVector() works
+	//It will be {1,2,3,4,...};
 
 	bool test_result = false;
 
@@ -155,6 +156,7 @@ bool TestClass::test_addFront2()
 		testableList.addFront(i);
 	
 	std::vector<int> test_vector = testableList.toVector();	//Since it is known that toVector() works
+	//It will be {30,29,28,...}
 
 	bool test_result = false;
 
@@ -176,20 +178,21 @@ bool TestClass::test_removeBack()
 {
 	LinkedListOfInts testableList;
 	
-	//At this point it is already know that addBack() works correctly.
+	//At this point it is already know that addFront() works correctly.
 	for(int i = 1; i <= 30; ++i)
-		testableList.addBack(i);
+		testableList.addFront(i);
 	
 	bool success = testableList.removeBack();	//Remove 30 from list which is leftmost element
 
 	std::vector<int> test_vector = testableList.toVector();	//Since it is known that toVector() works
+	//It will be {30,29,28,...,2}
 
 	bool test_result = false;
 
 	if(!test_vector.empty() && test_vector.size() == 29)
-		for(int i = 1; i <= 29; ++i)
+		for(int i = 2; i <= 30; ++i)
 		{
-			test_result = ( test_vector[i-1] == i );	//Check if list was harmed
+			test_result = ( test_vector[i-2] == 30-(i-2) );	//Check if list was harmed
 			if(test_result == false)
 				break;
 		}
@@ -204,19 +207,20 @@ bool TestClass::test_removeFront()
 {
 	LinkedListOfInts testableList;
 	
-	//At this point it is already know that addBack() works correctly.
+	//At this point it is already know that addFront() works correctly.
 	for(int i = 1; i <= 30; ++i)
-		testableList.addBack(i);
+		testableList.addFront(i);
 
 	bool success = testableList.removeFront();	//Remove 1 from list, which is rightmost element
 
 	std::vector<int> test_vector = testableList.toVector();	//Since it is known that toVector() works
+	//It will be {29,28,...,1}
 
 	bool test_result = false;
 	if(!test_vector.empty() && test_vector.size() == 29)
-		for(int i = 2; i <= 30; ++i)
+		for(int i = 1; i <= 29; ++i)
 		{
-			test_result = ( test_vector[i-2] == i ); //Check if list was harmed
+			test_result = ( test_vector[i-1] == 29-(i-1) ); //Check if list was harmed
 			if(test_result == false)
 				break;
 		}
@@ -368,8 +372,8 @@ bool TestClass::test_search1()
 bool TestClass::test_search2()
 {
 	LinkedListOfInts testableList;
-	testableList.addBack(15);
-	testableList.addBack(40);
+	testableList.addFront(15);
+	testableList.addFront(40);
 	bool test_result;
 
 	if(testableList.search(14) == false)
@@ -387,7 +391,7 @@ bool TestClass::test_search3()
 {
 	LinkedListOfInts testableList;
 	for(int i = 1; i <= 1'000'000; ++i)
-		testableList.addBack(i);
+		testableList.addFront(i);
 	
 	bool test_result;
 
@@ -406,15 +410,15 @@ bool TestClass::test_isEmpty2()
 {
 	LinkedListOfInts testableList;
 
-	testableList.addBack(30);
-	testableList.addBack(40);
-	testableList.addBack(50);
+	testableList.addFront(30);
+	testableList.addFront(40);
+	testableList.addFront(50);
 
 	std::vector<int> test_vector = testableList.toVector();	//Since it is known that toVector() works
 	
 	bool test_result = (test_vector.empty() == testableList.isEmpty());
 
-	printDescription(20,"populated list is not empty, by isEmpty()");
+	printDescription(20,"check if populated list is not empty, by isEmpty()");
 
 	printResult(test_result);
 	return test_result;
